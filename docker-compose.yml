@@ -1,0 +1,18 @@
+# Local infrastructure for social-feed. Uses non-default host ports so it can run alongside the
+# other portfolio services. The app runs on the host via `./gradlew bootRun`.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: sf-postgres
+    environment:
+      POSTGRES_DB: socialfeed
+      POSTGRES_USER: socialfeed
+      POSTGRES_PASSWORD: socialfeed
+    ports:
+      - "5433:5432"
+
+  redis:
+    image: redis:7-alpine
+    container_name: sf-redis
+    ports:
+      - "6380:6379"

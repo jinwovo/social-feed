@@ -1,0 +1,38 @@
+spring:
+  application:
+    name: social-feed
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5433/socialfeed}
+    username: ${DB_USER:socialfeed}
+    password: ${DB_PASSWORD:socialfeed}
+  jpa:
+    hibernate:
+      ddl-auto: none        # Flyway owns the schema
+    open-in-view: false
+  flyway:
+    enabled: true
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}
+      port: ${REDIS_PORT:6380}
+
+server:
+  port: ${SERVER_PORT:8095}
+
+feed:
+  # Authors above this follower count are pulled at read time instead of fanned out on write.
+  # Intentionally low for a local demo; a real deployment would use something like ~10k.
+  celebrity-follower-threshold: ${FEED_CELEBRITY_THRESHOLD:3}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus, metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    com.portfolio.socialfeed: DEBUG
