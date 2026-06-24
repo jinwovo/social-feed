@@ -11,6 +11,12 @@ PostgreSQL as the source of truth.
 
 ---
 
+## Demo
+
+The hybrid fan-out timeline — normal author pushed, celebrity pulled, merged newest-first:
+
+![social-feed — hybrid fan-out](docs/demo/demo.png)
+
 ## The problem
 
 A home timeline is read far more than it is written, so the read has to be cheap. Pre-computing each
