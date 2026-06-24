@@ -46,6 +46,9 @@ With the celebrity threshold set low for the demo, `alice` follows a **normal au
 - `GET /users/{alice}/timeline` returns **both** posts, newest first — the celebrity's via the
   read-time **pull**, `bob`'s via the **push** — merged into one feed.
 
+Covered by [`FanOutTest`](src/test/java/com/portfolio/socialfeed/FanOutTest.java) against
+Testcontainers Postgres + Redis.
+
 ## Tech stack
 
 - **Java 21**, **Spring Boot 4.1**, Spring Data JPA (Hibernate)
